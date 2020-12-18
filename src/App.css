@@ -1,0 +1,364 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+        'Open Sans', 'Helvetica Neue', sans-serif;
+    height: 100%;
+    background: #f1f1f1;
+}
+
+a {
+    color: #ce1312;
+}
+
+#root,
+.ais-InstantSearch {
+    height: 100%;
+}
+
+/*
+ * Header
+ */
+
+.navbar {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    background: #ffffff;
+    border: initial;
+    margin-bottom: initial;
+    z-index: 1;
+}
+
+.navbar__title {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0 15px;
+}
+
+.navbar__title > i {
+    color: #e91d00;
+}
+
+/*
+ * SearchBox
+ */
+
+.ais-SearchBox {
+    padding-right: 30px;
+}
+
+.navbar .ais-SearchBox-form {
+    display: flex;
+}
+
+.navbar .ais-SearchBox-input {
+    width: 275px;
+    max-width: 50vw;
+    padding: 8px 12px;
+    border: 1px solid #cccccc;
+    border-right: none;
+    border-radius: initial;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.navbar .ais-SearchBox-input:focus {
+    border-color: #66afe9;
+    outline: none;
+}
+
+.navbar .ais-SearchBox-submit {
+    position: initial;
+    background-color: #f8f8f8;
+    padding: 0 30px;
+    border: 1px solid #cccccc;
+    width: initial;
+    height: initial;
+    top: initial;
+    right: initial;
+    transform: initial;
+}
+
+.navbar .ais-SearchBox-submitIcon {
+    width: 15px;
+    height: 15px;
+    position: initial;
+    top: initial;
+    left: initial;
+    transform: initial;
+}
+
+.navbar .ais-SearchBox-reset {
+    display: none;
+}
+
+/*
+ * Main
+ */
+
+main {
+    height: calc(100% - 70px);
+}
+
+aside {
+    position: fixed;
+    top: 70px;
+    bottom: 10px;
+    padding: 30px 20px;
+    background: #ffffff;
+    overflow: scroll;
+    transition: 0.5s ease;
+    width: calc(20%);
+    min-width: 200px;
+    left: 0;
+    z-index: 5;
+}
+
+@media only screen and (max-width: 830px) {
+    aside {
+        left: -300px;
+        opacity: 0;
+        box-shadow: 0 6px 10px 10px rgba(0, 0, 0, 0.2);
+        width: 250px;
+    }
+}
+
+aside.active {
+    left: 0;
+    opacity: 1;
+}
+
+.Toggler {
+    position: fixed;
+    cursor: pointer;
+    top: -3px;
+    right: 10px;
+    z-index: 4;
+    font-size: 42px;
+}
+
+@media only screen and (min-width: 830px) {
+    .Toggler {
+        display: none;
+    }
+}
+
+.ais-Panel {
+    margin-top: 20px;
+}
+
+.ais-Panel-header {
+    text-transform: uppercase;
+    border-bottom: 0;
+}
+
+.ais-Panel-header h5 {
+    color: black;
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 0;
+}
+
+.ais-RefinementList-item--selected .ais-RefinementList-label {
+    color: #ffffff;
+    background: #333333;
+}
+
+.ais-RefinementList-item--selected .ais-RefinementList-count {
+    background: #333333;
+    color: white;
+}
+
+.ais-RefinementList-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 4px 4px 4px 8px;
+    font-weight: normal;
+    font-size: 0.9em;
+    margin: 0 0 -1px;
+}
+
+.ais-RefinementList-label:hover {
+    color: #ffffff;
+    background: #333333;
+}
+
+.ais-RefinementList-checkbox {
+    display: none;
+}
+
+.ais-RefinementList-count {
+    color: grey;
+    border: 1px solid lightgrey;
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    padding: 5px;
+    border-radius: 0;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ais-RatingMenu-item {
+    margin-bottom: 5px;
+}
+
+.ais-RatingMenu-link,
+.ais-RatingMenu-link:hover {
+    color: black;
+}
+
+.ais-RatingMenu-item--selected .ais-RatingMenu-link {
+    color: #ce1312;
+}
+
+.ais-RatingMenu-starIcon {
+    margin-left: 0;
+}
+
+.ais-RatingMenu-count {
+    padding: 0.1rem 0.4rem;
+    font-size: 0.8rem;
+    border-radius: 8px;
+    color: #ffffff;
+    background: #bbbbbb;
+    margin-left: auto;
+}
+
+.ais-RatingMenu-count::before,
+.ais-RatingMenu-count::after {
+    display: none;
+}
+
+.thank-you {
+    margin-top: 20px;
+}
+
+/*
+ * Results
+ */
+
+.content {
+    padding: 70px 0;
+    width: calc(80% - 55px);
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+@media only screen and (max-width: 830px) {
+    .content {
+        width: auto;
+        margin: 0 15px;
+    }
+}
+
+.results {
+    background: white;
+    padding: 15px;
+}
+
+.results-header {
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    text-align: right;
+}
+
+.ais-Stats-text {
+    font-size: 0.9em;
+}
+
+.movies-no-results {
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.movie {
+    height: 130px;
+    margin-bottom: 10px;
+    border: 1px solid #f3f3f3;
+    overflow: hidden;
+}
+
+.media-object {
+    height: 130px;
+    width: 130px;
+    overflow: hidden;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.media-body {
+    padding: 5px;
+}
+
+.media-heading {
+    display: flex;
+}
+
+.ais-Highlight,
+.ais-Highlight-highlighted {
+    font-size: 1em;
+}
+
+.ais-Highlight-highlighted {
+    background: #ffffd4;
+    text-decoration: underline;
+    padding: initial;
+}
+
+.media-rating {
+    display: flex;
+    margin-left: 5px;
+}
+
+.year {
+    font-weight: 600;
+}
+
+.badge {
+    background: #bbbbbb;
+    font-weight: initial;
+    margin-right: 2px;
+}
+
+.ais-Pagination {
+    margin: 25px 0;
+}
+
+.ais-Pagination-link {
+    background: #f8f8f8;
+    border-radius: 0;
+    color: #333;
+    padding: 3px 8px;
+    margin-right: 4px;
+}
+
+.ais-Pagination-link:hover {
+    color: initial;
+}
+
+.ais-Pagination-item--selected .ais-Pagination-link,
+.ais-Pagination-item--selected .ais-Pagination-link:hover,
+.ais-Pagination-item--selected .ais-Pagination-link:focus {
+    border-color: #337ab7;
+    background-color: #f8f8f8;
+    color: initial;
+}
