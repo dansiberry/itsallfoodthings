@@ -22,10 +22,9 @@
                     </div>
                     <ais-hits>
                         <div class="movies" slot-scope="{ items }">
-                            <Recipe v-for="item in items" :key="item.title" :recipe="item" />
+                            <Groups :items="items" />
                         </div>
                     </ais-hits>
-                    <ais-pagination />
                 </div>
             </section>
         </main>
@@ -36,7 +35,7 @@
 import algoliasearch from 'algoliasearch/lite';
 import { history as historyRouter } from 'instantsearch.js/es/lib/routers';
 import { simple as simpleMapping } from 'instantsearch.js/es/lib/stateMappings';
-import Recipe from './components/Recipe';
+import Groups from './components/Groups';
 import SidePannel from './components/SidePannel';
 
 import './App.css';
@@ -53,8 +52,8 @@ export default {
         };
     },
     components: {
-        Recipe,
-        SidePannel
+        SidePannel,
+        Groups
     }
 };
 </script>

@@ -1,17 +1,17 @@
 <template>
-    <div class="Recipe">
+    <div class="Recipe" :class="{'Recipe--active' : active }">
         <h3 class="Recipe__title" @click="active = !active">
             {{ recipe.title }}
         </h3>
         <div class="Recipe__expandable" :class="active && 'active'">
             <ol class="Recipe__steps">
-                <li v-for="step in recipe.steps">{{ step }}</li>
+                <li v-for="(step, i) in recipe.steps" :key="i">{{ step }}</li>
             </ol>
 
-            <div v-for="group in recipe.ingredients" class="Recipe__ingredient-group">
+            <div v-for="group in recipe.ingredients" :key="group.group" class="Recipe__ingredient-group">
                 <p class="Recipe__ingredient-heading" v-if="group.group">{{ group.group }}</p>
                 <div class="Recipe__ingredient-table">
-                    <p v-for="ingredient in group.items">
+                    <p v-for="ingredient in group.items" :key="ingredient">
                         {{ ingredient }}
                     </p>
                 </div>
@@ -36,22 +36,40 @@ export default {
 
 <style>
 .Recipe {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    max-width: 700px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    max-width: 800px;
+    padding-left: 30px;
+    padding-right: 30px;
     margin-left: auto;
     margin-right: auto;
     color: black;
+    transition: .5s ease;
+    background-color: transparent;
+}
+
+.Recipe--active {
+    padding-top: 65px;
+    background-color: #fff4d6;
+}
+
+.Recipe--active .Recipe__title {
+   font-size: 22px;
+   font-weight: 600;
+   padding-bottom: 30px;
 }
 
 .Recipe__title {
-    font-size: 24px;
+    font-size: 18px;
     cursor: pointer;
     text-align: center;
+    margin: 0;
+    transition: .5s ease;
 }
 
 .Recipe__steps {
     font-size: 16px;
+    font-weight: 400;
     margin-top: 30px;
     margin-bottom: 30px;
 }
