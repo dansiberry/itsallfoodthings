@@ -12,7 +12,7 @@
             <SidePannel :active="sideBarActive" />
 
             <div class="Toggler" @click="sideBarActive = !sideBarActive">
-                🗄
+                📂
             </div>
 
             <section class="content">

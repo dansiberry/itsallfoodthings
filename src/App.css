@@ -122,7 +122,7 @@ aside {
     width: calc(20%);
     min-width: 200px;
     left: 0;
-    z-index: 5;
+    z-index: 100;
 }
 
 @media only screen and (max-width: 830px) {
@@ -171,12 +171,12 @@ aside.active {
 }
 
 .ais-RefinementList-item--selected .ais-RefinementList-label {
-    color: #ffffff;
-    background: #333333;
+    color: #ffffff !important;
+    background: #333333 !important;
 }
 
 .ais-RefinementList-item--selected .ais-RefinementList-count {
-    background: #333333;
+    background: #333333 !important;
     color: white;
 }
 
@@ -191,10 +191,10 @@ aside.active {
     margin: 0 0 -1px;
 }
 
-.ais-RefinementList-label:hover {
-    color: #ffffff;
-    background: #333333;
-}
+/* .ais-RefinementList-label:hover {
+    color: black;
+    background: transparent;
+} */
 
 .ais-RefinementList-checkbox {
     display: none;

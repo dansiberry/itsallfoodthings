@@ -115,7 +115,7 @@ export default {
 }
 
 .Recipe__expandable.active {
-    max-height: 1000px;
+    max-height: 3000px;
     opacity: 1;
 }
 </style>
