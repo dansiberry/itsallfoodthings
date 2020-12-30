@@ -38,7 +38,7 @@ a {
     background: #ffffff;
     border: initial;
     margin-bottom: initial;
-    z-index: 1;
+    z-index: 50;
 }
 
 .navbar__title {
@@ -142,10 +142,10 @@ aside.active {
 .Toggler {
     position: fixed;
     cursor: pointer;
-    top: -3px;
-    right: 10px;
-    z-index: 4;
-    font-size: 42px;
+    top: 5px;
+    right: 15px;
+    z-index: 55;
+    font-size: 34px;
 }
 
 @media only screen and (min-width: 830px) {
@@ -185,9 +185,9 @@ aside.active {
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    padding: 4px 4px 4px 8px;
+    padding: 8px 4px 8px 8px;
     font-weight: normal;
-    font-size: 0.9em;
+    font-size: 16px;
     margin: 0 0 -1px;
 }
 

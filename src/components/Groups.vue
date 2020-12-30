@@ -58,7 +58,7 @@ export default {
     padding: 15px 0;
     font-weight: 600;
     position: relative;
-    max-height: 100px;
+    max-height: 80px;
     overflow: hidden;
 }
 
@@ -67,17 +67,17 @@ export default {
 }
 
 .Group:before {
-    content: '▾';
+    content: '⌃';
     position: absolute;
     width: 100%;
     display: flex;
     justify-content: center;
-    bottom: 19px;
+    bottom: 7px;
     left: 0;
     font-size: 18px;
     opacity: .3;
     z-index: 30;
-    transform: scaleX(2);
+    transform: rotate(180deg);
 }
 
 .Group--active:before {
@@ -98,7 +98,7 @@ export default {
     color: black;
     margin-bottom: 30px;
     margin-top: 10px;
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 700;
     cursor: pointer;
     z-index: 20;
