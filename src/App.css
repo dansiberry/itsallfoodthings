@@ -134,7 +134,7 @@ aside {
     }
 }
 
-aside.active {
+.active aside {
     left: 0;
     opacity: 1;
 }

@@ -9,7 +9,9 @@
         </header>
 
         <main>
-            <SidePannel :active="sideBarActive" />
+            <div :class="{'active' : sideBarActive}">
+                <SidePannel :active="sideBarActive" />
+            </div>
 
             <div class="Toggler" @click="sideBarActive = !sideBarActive">
                 📂

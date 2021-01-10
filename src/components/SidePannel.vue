@@ -1,5 +1,5 @@
 <template>
-    <aside :class="active ? 'active' : ''">
+    <aside>
 
         <ais-panel>
             <h5 slot="header">Group</h5>
@@ -41,11 +41,5 @@
 
 <script>
 export default {
-    props: {
-        active: {
-            required: true,
-            type: Boolean
-        }
-    }
 };
 </script>
