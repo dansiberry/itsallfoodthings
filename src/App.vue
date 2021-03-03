@@ -20,11 +20,16 @@
             <section class="content">
                 <div class="results">
                     <div class="results-header">
+                        <div class="results__views">
+                            <a @click="groupsView = true" :class="{'active' : groupsView}">Groups</a>
+                            <a @click="groupsView = false" :class="{'active' : !groupsView}">List</a>
+                        </div>
                         <ais-stats />
                     </div>
                     <ais-hits>
                         <div class="movies" slot-scope="{ items }">
-                            <Groups :items="items" />
+                            <Groups v-if="groupsView" :items="items" />
+                            <Recipe v-else v-for="item in items" :key="item.title" :recipe="item" />
                         </div>
                     </ais-hits>
                 </div>
@@ -38,6 +43,7 @@ import algoliasearch from 'algoliasearch/lite';
 import { history as historyRouter } from 'instantsearch.js/es/lib/routers';
 import { simple as simpleMapping } from 'instantsearch.js/es/lib/stateMappings';
 import Groups from './components/Groups';
+import Recipe from './components/Recipe';
 import SidePannel from './components/SidePannel';
 
 import './App.css';
@@ -45,6 +51,7 @@ import './App.css';
 export default {
     data() {
         return {
+            groupsView: true,
             sideBarActive: false,
             searchClient: algoliasearch('OZIAMBH3SH', 'ae54064ae96523820ee8cbe123eee971'),
             routing: {
@@ -55,7 +62,8 @@ export default {
     },
     components: {
         SidePannel,
-        Groups
+        Groups,
+        Recipe
     }
 };
 </script>
