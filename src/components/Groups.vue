@@ -8,7 +8,7 @@
         >
             <h2 class="Group__title" @click="active = (active === group ? null : group)">{{ group }}</h2>
             <div class="Group__list">
-                <Recipe v-for="item in grouped[group]" :key="item.title" :recipe="item" />
+                <Recipe v-for="(item, i) in grouped[group]" :key="item.title + i" :recipe="item" />
             </div>
         </div>
     </div>
@@ -37,11 +37,11 @@ export default {
         grouped() {
             if (!this.items.length) return [];
             return this.items.reduce((acc, current) => {
-                current.group.forEach(group => {
-                    if (acc[group]) {
-                        acc[group].push(current)
+                current.types.forEach(type => {
+                    if (acc[type.title]) {
+                        acc[type.title].push(current)
                     } else {
-                        acc[group] = [current]
+                        acc[type.title] = [current]
                     }
                 })
                 return acc;

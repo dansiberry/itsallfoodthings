@@ -1,0 +1,99 @@
+{
+    "title":"",
+    "group":[
+        "Salad",
+        "Sauce / Dressing",
+        "Noodles",
+        "Cake",
+        "Dip",
+        "Soup",
+        "Pasta",
+        "Rice",
+        "Casserole",
+        "Pie / Tart (savoury)",
+        "Eggs",
+        "Fritter",
+        "Seafood",
+        "Burger / Sandwich",
+        "Curry",
+        "Meat / Veg centre dish",
+        "Stew",
+        "Stir-fry",
+        "Bread",
+        "Grains / Beans",
+        "Pudding"
+    ],
+    "course":[
+        "Main",
+        "Side",
+        "Buffet",
+        "Starter",
+        "Snack",
+        "Finger food",
+        "Tea",
+        "Dessert",
+        "Canape"
+    ],
+    "price":"Low",
+    "cuisine":[
+        "Japan",
+        "Italy",
+        "China",
+        "France",
+        "Thailand",
+        "India",
+        "Korea",
+        "UK",
+        "Middle East",
+        "Spain",
+        "Mexico",
+        "USA",
+        "Greece",
+        "Ireland",
+        "Hawai",
+        "Jewish",
+        "Malaysia",
+        "Peru",
+        "Singapore",
+        "Taiwan"
+    ],
+    "time": "Medium",
+    "chef":null,
+    "diet":[
+       "Vegetarian",
+       "Vegan"
+    ],
+    "notes":"",
+    "steps":[
+       "",
+       ""
+    ],
+    "ingredients":[
+       {
+          "group":"",
+          "items":[
+             ""
+          ]
+       }
+    ],
+    "occasion":[
+        "Weeknight",        
+        "Make in advance",        
+        "Lunch",        
+        "Dinner",        
+        "Brunch",        
+        "Party",        
+        "Big crowd",        
+        "Lunchbox",        
+        "Pot luck",        
+        "Hangover",        
+        "Winter",        
+        "Freeze",        
+        "Tea",        
+        "Summer",        
+        "BBQ",        
+        "Christmas",        
+        "Breakfast",        
+        "Buffet"
+    ]
+ }

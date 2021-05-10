@@ -1,7 +1,7 @@
 <template>
     <ais-instant-search
         :search-client="searchClient"
-        index-name="itsallfoodthings"
+        index-name="itsallfoodthings2"
         :routing="routing"
     >
         <header class="navbar">
@@ -29,7 +29,7 @@
                     <ais-hits>
                         <div class="movies" slot-scope="{ items }">
                             <Groups v-if="groupsView" :items="items" />
-                            <Recipe v-else v-for="item in items" :key="item.title" :recipe="item" />
+                            <Recipe v-else v-for="(item, i) in items" :key="i" :recipe="item" />
                         </div>
                     </ais-hits>
                 </div>
@@ -46,7 +46,7 @@ import Groups from './components/Groups';
 import Recipe from './components/Recipe';
 import SidePannel from './components/SidePannel';
 
-import './App.css';
+import './App.scss';
 
 export default {
     data() {

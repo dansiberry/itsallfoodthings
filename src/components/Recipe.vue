@@ -3,15 +3,17 @@
         <h3 class="Recipe__title" @click="active = !active">
             {{ recipe.title }}
         </h3>
-        <div class="Recipe__expandable" :class="active && 'active'">
+        <div class="pb-8 Recipe__expandable" v-if="active">
+            <span @click="deleteRecipe" class="absolute top-0 right-0 p-2 mt-4 mr-4 font-bold text-red-500 border border-red-500 rounded cursor-pointer">{{ deleted ? 'Deleted' : 'Delete' }}</span>
+            <span @click="edit" class="absolute top-0 right-0 p-2 mt-4 mr-32 font-bold text-blue-500 border border-blue-500 rounded cursor-pointer">Edit</span>
             <ol class="Recipe__steps">
                 <li v-for="(step, i) in recipe.steps" :key="i">{{ step }}</li>
             </ol>
 
-            <div v-for="group in recipe.ingredients" :key="group.group" class="Recipe__ingredient-group">
+            <div v-for="(group, i) in recipe.ingredients" :key="i" class="Recipe__ingredient-group">
                 <p class="Recipe__ingredient-heading" v-if="group.group">{{ group.group }}</p>
                 <div class="Recipe__ingredient-table">
-                    <p v-for="ingredient in group.items" :key="ingredient">
+                    <p v-for="(ingredient, i) in group.items" :key="i">
                         {{ ingredient }}
                     </p>
                 </div>
@@ -21,14 +23,42 @@
 </template>
 
 <script>
+import FormRecipeEdit from './forms/recipe/Edit';
+
 export default {
     data: () => ({
-        active: false
+        active: false,
+        deleted: false
     }),
     props: {
         recipe: {
             type: Object,
             required: true
+        }
+    },
+    methods: {
+        async deleteRecipe() {
+            try {
+                const res = await fetch(`http://localhost:3000/api/recipe/delete/${this.recipe.objectID}`, {
+                    method: 'GET'
+                });
+                if (res.status !== 200) {
+                    const response = await res.json();
+                    const error = await response.error;
+                    console.error(error);
+                } else {
+                    this.deleted = true;
+                }
+            } catch (error) {
+                this.error = error;
+            }
+        },
+        edit() {
+            this.$modal.show(
+                FormRecipeEdit,
+                {recipe: this.recipe},
+                { adaptive: false }
+            )
         }
     }
 };
@@ -43,6 +73,7 @@ export default {
     padding-right: 30px;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
     color: black;
     transition: .5s ease;
     background-color: transparent;
@@ -105,17 +136,5 @@ export default {
 
 .Recipe__ingredient-heading {
     font-weight: 600;
-}
-
-.Recipe__expandable {
-    max-height: 0px;
-    opacity: 0;
-    overflow: hidden;
-    transition: 0.5s ease;
-}
-
-.Recipe__expandable.active {
-    max-height: 3000px;
-    opacity: 1;
 }
 </style>
