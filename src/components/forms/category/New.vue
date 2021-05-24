@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import { getCookie } from '@/utils';
+
 export default {
     data: () => ({
         categories: [],
@@ -28,7 +30,7 @@ export default {
         error: null
     }),
     created() {
-        fetch('http://localhost:3000/api/categories')
+        fetch(`${process.env.VUE_APP_API_URL}/api/categories`)
         .then(response => response.json())
         .then((data) => {
             this.categories = data;
@@ -38,14 +40,15 @@ export default {
     methods: {
         async submit() {
             try {
-                const res = await fetch('http://localhost:3000/api/categories/create', {
+                const res = await fetch(`${process.env.siteURL}/api/categories/create`, {
                     method: 'POST',
-                    mode: 'cors',
                     cache: 'no-cache',
-                    credentials: 'same-origin',
                     headers: {
-                    'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        authentication: getCookie('sessionID')
                     },
+                    mode: 'cors',
+                    credentials: 'same-origin',
                     redirect: 'follow',
                     referrerPolicy: 'no-referrer',
                     body: JSON.stringify({
@@ -68,33 +71,5 @@ export default {
 </script>
 
 <style>
-    .Form__wrapper {
-        padding: 30px;
-        height: 80vh;
-        max-height: 900px;
-        overflow: scroll;
-    }
 
-    .Form__wrapper input {
-        display: block;
-    }
-
-    .Form__ingredients-group {
-        margin: 15px;
-    }
-
-    .Form__ingredients-group-title {
-        font-size: 16px;
-    }
-
-    .vm--modal {
-        overflow: scroll;
-        @apply mx-auto overflow-scroll mt-20;
-        width: 80vw !important;
-        top: 0 !important;
-        left: 0 !important;
-        height: 80vh !important;
-        max-height: 700px !important;
-        max-width: 600px !important;
-    }
 </style>

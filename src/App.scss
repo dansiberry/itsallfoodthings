@@ -394,3 +394,34 @@ aside {
 .button {
     @apply bg-blue-500 p-2 text-white rounded;
 }
+
+.vm--modal {
+    overflow: scroll;
+    width: 80vw !important;
+    top: 0 !important;
+    left: 0 !important;
+    height: 80vh !important;
+    max-height: 700px !important;
+    max-width: 600px !important;
+    background-color: transparent;
+    box-shadow: none;
+    @apply mx-auto overflow-scroll mt-20;
+}
+
+.Form__wrapper {
+    padding: 30px;
+    max-height: 900px;
+    overflow: scroll;
+}
+
+.Form__wrapper input {
+    display: block;
+}
+
+.Form__ingredients-group {
+    margin: 15px;
+}
+
+.Form__ingredients-group-title {
+    font-size: 16px;
+}

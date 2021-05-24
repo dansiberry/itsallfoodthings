@@ -4,8 +4,8 @@
             {{ recipe.title }}
         </h3>
         <div class="pb-8 Recipe__expandable" v-if="active">
-            <span @click="deleteRecipe" class="absolute top-0 right-0 p-2 mt-4 mr-4 font-bold text-red-500 border border-red-500 rounded cursor-pointer">{{ deleted ? 'Deleted' : 'Delete' }}</span>
-            <span @click="edit" class="absolute top-0 right-0 p-2 mt-4 mr-32 font-bold text-blue-500 border border-blue-500 rounded cursor-pointer">Edit</span>
+            <span v-if="loggedIn" @click="deleteRecipe" class="absolute top-0 right-0 p-2 mt-4 mr-4 font-bold text-red-500 border border-red-500 rounded cursor-pointer">{{ deleted ? 'Deleted' : 'Delete' }}</span>
+            <span v-if="loggedIn" @click="edit" class="absolute top-0 right-0 p-2 mt-4 mr-32 font-bold text-blue-500 border border-blue-500 rounded cursor-pointer">Edit</span>
             <ol class="Recipe__steps">
                 <li v-for="(step, i) in recipe.steps" :key="i">{{ step }}</li>
             </ol>
@@ -24,12 +24,18 @@
 
 <script>
 import FormRecipeEdit from './forms/recipe/Edit';
+import { getCookie } from '@/utils';
 
 export default {
     data: () => ({
         active: false,
         deleted: false
     }),
+    computed: {
+        loggedIn() {
+            return document.cookie.includes('sessionID');
+        }
+    },
     props: {
         recipe: {
             type: Object,
@@ -39,8 +45,11 @@ export default {
     methods: {
         async deleteRecipe() {
             try {
-                const res = await fetch(`http://localhost:3000/api/recipe/delete/${this.recipe.objectID}`, {
-                    method: 'GET'
+                const res = await fetch(`${process.env.VUE_APP_API_URL}/api/recipe/delete/${this.recipe.objectID}`, {
+                    method: 'GET',
+                    headers: {
+                      authentication: getCookie('sessionID')
+                    },
                 });
                 if (res.status !== 200) {
                     const response = await res.json();

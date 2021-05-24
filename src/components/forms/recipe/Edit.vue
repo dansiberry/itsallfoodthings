@@ -57,6 +57,8 @@
 </template>
 
 <script>
+import { getCookie } from '@/utils';
+
 export default {
     props: {
         recipe: {
@@ -121,7 +123,7 @@ export default {
             }
         },
         getCategories() {
-            fetch('http://localhost:3000/api/categories')
+            fetch(`${process.env.VUE_APP_API_URL}/api/categories`)
             .then(response => response.json())
             .then(data => {
                 this.categories = data
@@ -139,13 +141,14 @@ export default {
         },
         async submit() {
             try {
-                const res = await fetch(`http://localhost:3000/api/recipe/edit/${this.recipe.objectID}`, {
+                const res = await fetch(`${process.env.VUE_APP_API_URL}/api/recipe/edit/${this.recipe.objectID}`, {
                   method: 'POST',
                   mode: 'cors',
                   cache: 'no-cache',
                   credentials: 'same-origin',
                   headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    authentication: getCookie('sessionID')
                   },
                   redirect: 'follow',
                   referrerPolicy: 'no-referrer',
@@ -172,33 +175,4 @@ export default {
 </script>
 
 <style>
-    .Form__wrapper {
-        padding: 30px;
-        height: 80vh;
-        max-height: 900px;
-        overflow: scroll;
-    }
-
-    .Form__wrapper input {
-        display: block;
-    }
-
-    .Form__ingredients-group {
-        margin: 15px;
-    }
-
-    .Form__ingredients-group-title {
-        font-size: 16px;
-    }
-
-    .vm--modal {
-        overflow: scroll;
-        @apply mx-auto overflow-scroll mt-20;
-        width: 80vw !important;
-        top: 0 !important;
-        left: 0 !important;
-        height: 80vh !important;
-        max-height: 700px !important;
-        max-width: 600px !important;
-    }
 </style>
