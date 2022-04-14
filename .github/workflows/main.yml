@@ -15,10 +15,11 @@ jobs:
           node-version: '14'
       - run: yarn
       - run: yarn build
+      - run: rm .gitignore
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
       - name: Deploy 
         uses: JamesIves/github-pages-deploy-action@v4.3.0
         with:
-          branch: gh-pages2 
+          branch: gh-pages
           folder: dist 
