@@ -1,6 +1,6 @@
 # media
 
-## Project setup.
+## Project setup..
 
 ```
 yarn install
