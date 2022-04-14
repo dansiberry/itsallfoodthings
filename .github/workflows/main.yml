@@ -12,7 +12,6 @@ jobs:
 
       - name: Install and Build 
         run: |
-          npm install --global yarn
           yarn --prod
           yarn build
       - name: Deploy 
