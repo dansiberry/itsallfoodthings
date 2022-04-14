@@ -9,11 +9,13 @@ jobs:
     steps:
       - name: Checkout 
         uses: actions/checkout@v3
-
-      - name: Install and Build 
-        run: |
-          yarn --prod
-          yarn build
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14.x
+          cache: 'npm'
+      - run: yarn --prod
+      - run: yarn build
       - name: Deploy 
         uses: JamesIves/github-pages-deploy-action@v4.3.0
         with:
