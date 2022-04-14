@@ -46,7 +46,7 @@ import Groups from './components/Groups';
 import Recipe from './components/Recipe';
 import SidePannel from './components/SidePannel';
 
-import './App.scss';
+import './App.css';
 
 export default {
     data() {
