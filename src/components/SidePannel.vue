@@ -4,7 +4,7 @@
             <button class="p-2 mr-2 text-white bg-blue-500 rounded" @click="newRecipe">Add Recipe</button>
             <button class="p-2 mt-2 text-white bg-blue-500 rounded" @click="newCategory">Add Category</button>
         </div>
-        <button v-else class="p-2 mt-2 text-white bg-blue-500 rounded" @click="login">login</button>
+        <button v-else class="p-2 mt-2 text-white bg-blue-500 rounded" @click="login">login </button>
         <ais-panel>
             <h5 slot="header">Type</h5>
             <ais-refinement-list :limit="3" :sort-by="['count:desc']" :show-more="true" attribute="types.title" />
