@@ -20,5 +20,5 @@ jobs:
       uses: actions/setup-node@v3
     - run: yarn
     - run: yarn build
-    - run: cp -r /var/www/runners/actions-runner-itsallfoodthings-front/_work/itsallfoodthings-front/itsallfoodthings-front/. /var/www/itsallfoodthings-front
+    - run: cp -r /var/www/runners/actions-runner-itsallfoodthings-front/_work/itsallfoodthings-front/itsallfoodthings-front/dist/. /var/www/itsallfoodthings-front
 
