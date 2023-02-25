@@ -21,7 +21,7 @@ jobs:
     - name: 'Create env file'
       run: |
         touch .env
-        echo VUE_APP_API_URL=https://danielsiberry.com/food/ >> .env
+        echo VUE_APP_API_URL=https://danielsiberry.com/food/api >> .env
         echo VUE_APP_ALGOLIA_INDEX=itsallfoodthings-prod >> .env
         cat .env
     - run: yarn

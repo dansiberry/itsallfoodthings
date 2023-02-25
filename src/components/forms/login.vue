@@ -17,7 +17,7 @@ export default {
     methods: {
         async submit() {
             try {
-                const res = await fetch(`${process.env.VUE_APP_API_URL}/api/login`, {
+                const res = await fetch(`${process.env.VUE_APP_API_URL}/login`, {
                   method: 'POST',
                   mode: 'cors',
                   cache: 'no-cache',

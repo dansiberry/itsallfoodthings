@@ -72,8 +72,7 @@ export default {
         activeCategories: []
     }),
     created() {
-        console.log(process.env);
-        fetch(`${process.env.VUE_APP_API_URL}/api/categories`)
+        fetch(`${process.env.VUE_APP_API_URL}/categories`)
         .then(response => response.json())
         .then((data) => {
             this.categories = data;
@@ -122,7 +121,7 @@ export default {
         },
         async submit() {
             try {
-                const res = await fetch(`${process.env.VUE_APP_API_URL}/api/recipes/create`, {
+                const res = await fetch(`${process.env.VUE_APP_API_URL}/recipes/create`, {
                   method: 'POST',
                   mode: 'cors',
                   cache: 'no-cache',

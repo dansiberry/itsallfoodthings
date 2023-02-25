@@ -45,7 +45,7 @@ export default {
     methods: {
         async deleteRecipe() {
             try {
-                const res = await fetch(`${process.env.VUE_APP_API_URL}/api/recipe/delete/${this.recipe.objectID}`, {
+                const res = await fetch(`${process.env.VUE_APP_API_URL}/recipe/delete/${this.recipe.objectID}`, {
                     method: 'GET',
                     headers: {
                       authentication: getCookie('sessionID')
@@ -54,6 +54,7 @@ export default {
                 if (res.status !== 200) {
                     const response = await res.json();
                     const error = await response.error;
+                    /* eslint no-console: ["error", { allow: ["warn", "error"] }] */
                     console.error(error);
                 } else {
                     this.deleted = true;

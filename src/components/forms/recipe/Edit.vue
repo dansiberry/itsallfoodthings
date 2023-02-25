@@ -123,7 +123,7 @@ export default {
             }
         },
         getCategories() {
-            fetch(`${process.env.VUE_APP_API_URL}/api/categories`)
+            fetch(`${process.env.VUE_APP_API_URL}/categories`)
             .then(response => response.json())
             .then(data => {
                 this.categories = data
@@ -132,7 +132,6 @@ export default {
         },
         populateRecipeCategories() {
             this.categories.forEach(cat => {
-                const rows = this.recipe[cat.category].map(item => {title: item})
                 this.activeCategories.push({
                     category: cat.category,
                     rows: this.recipe[cat.category]
@@ -141,7 +140,7 @@ export default {
         },
         async submit() {
             try {
-                const res = await fetch(`${process.env.VUE_APP_API_URL}/api/recipe/edit/${this.recipe.objectID}`, {
+                const res = await fetch(`${process.env.VUE_APP_API_URL}/recipe/edit/${this.recipe.objectID}`, {
                   method: 'POST',
                   mode: 'cors',
                   cache: 'no-cache',
