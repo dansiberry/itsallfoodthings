@@ -19,12 +19,12 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
     - name: 'Create env file'
-    run: |
-      touch .env
-      echo VUE_APP_API_URL=https://itsallfoodthings.com/api/ >> .env
-      echo VUE_APP_ALGOLIA_INDEX=itsallfoodthings-prod >> .env
-      echo API_ENDPOINT="https://xxx.execute-api.us-west-2.amazonaws.com" >> .env
-      cat .env
+      run: |
+        touch .env
+        echo VUE_APP_API_URL=https://itsallfoodthings.com/api/ >> .env
+        echo VUE_APP_ALGOLIA_INDEX=itsallfoodthings-prod >> .env
+        echo API_ENDPOINT="https://xxx.execute-api.us-west-2.amazonaws.com" >> .env
+        cat .env
     - run: yarn
     - run: yarn build
     - run: cp -r /var/www/runners/actions-runner-itsallfoodthings-front/_work/itsallfoodthings/itsallfoodthings/dist/. /var/www/itsallfoodthings-front
