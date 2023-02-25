@@ -27,4 +27,4 @@ jobs:
       cat .env
     - run: yarn
     - run: yarn build
-    - run: cp -r /var/www/runners/actions-runner-itsallfoodthings-front/_work/itsallfoodthings-front/itsallfoodthings-front/. /var/www/itsallfoodthings-front
+    - run: cp -r /var/www/runners/actions-runner-itsallfoodthings-front/_work/itsallfoodthings/itsallfoodthings/dist/. /var/www/itsallfoodthings-front
