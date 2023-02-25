@@ -1,23 +1,30 @@
-name: Build and Deploy
+name: Node.js CI
+
 on:
   push:
     branches: [ master ]
+
 jobs:
-  build-and-deploy:
-    concurrency: ci-${{ github.ref }} 
-    runs-on: ubuntu-latest
+  build:
+
+    runs-on: self-hosted
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
     steps:
-      - name: Checkout 
-        uses: actions/checkout@v3
-      - name: yarn build...
-        uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-      - run: yarn
-      - run: yarn build
-      - name: Deploy 
-        uses: JamesIves/github-pages-deploy-action@v4.3.0
-        with:
-          branch: gh-pages
-          folder: dist 
-          CLEAN: true
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+    - name: 'Create env file'
+    run: |
+      touch .env
+      echo VUE_APP_API_URL=https://itsallfoodthings.com/api/ >> .env
+      echo VUE_APP_ALGOLIA_INDEX=itsallfoodthings-prod >> .env
+      echo API_ENDPOINT="https://xxx.execute-api.us-west-2.amazonaws.com" >> .env
+      cat .env
+    - run: yarn
+    - run: yarn build
+    - run: cp -r /var/www/runners/actions-runner-itsallfoodthings-front/_work/itsallfoodthings-front/itsallfoodthings-front/. /var/www/itsallfoodthings-front
