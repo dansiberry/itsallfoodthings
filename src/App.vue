@@ -1,7 +1,7 @@
 <template>
     <ais-instant-search
         :search-client="searchClient"
-        index-name="itsallfoodthings2"
+        :index-name="index"
         :routing="routing"
     >
         <header class="navbar">
@@ -21,7 +21,7 @@
                 <div class="results">
                     <div class="results-header">
                         <div class="results__views">
-                            <a @click="groupsView = true" :class="{'active' : groupsView}">Groups</a>
+                            <a @click="groupsView = true" :class="{'active' : groupsView}">Groups ff</a>
                             <a @click="groupsView = false" :class="{'active' : !groupsView}">List</a>
                         </div>
                         <ais-stats />
@@ -57,7 +57,8 @@ export default {
             routing: {
                 router: historyRouter(),
                 stateMapping: simpleMapping()
-            }
+            },
+            index: process.env.VUE_APP_ALGOLIA_INDEX
         };
     },
     components: {

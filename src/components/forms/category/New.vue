@@ -30,7 +30,7 @@ export default {
         error: null
     }),
     created() {
-        fetch(`${process.env.VUE_APP_API_URL}/api/categories`)
+        fetch(`${process.env.API_URL}/api/categories`)
         .then(response => response.json())
         .then((data) => {
             this.categories = data;
@@ -40,7 +40,7 @@ export default {
     methods: {
         async submit() {
             try {
-                const res = await fetch(`${process.env.siteURL}/api/categories/create`, {
+                const res = await fetch(`${process.env.API_URL}/api/categories/create`, {
                     method: 'POST',
                     cache: 'no-cache',
                     headers: {
